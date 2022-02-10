@@ -3,7 +3,21 @@
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
+// import axios from "axios";
+// const followersArray = ['tetondan', 'dustinmyers', 'justsml', 'luishrd', 'bigknell', 'crharding'];
 
+// for (let i = 0; i < array.length; i++) {
+//    gitCard(followersArray[i]);
+  
+// }
+
+// function gitCard(username) {
+// axios.get(`https://api.github.com/users/${username}`)
+//   .then(resp =>{
+//     document.querySelector('.cards').appendChild(cardGitHub(resp.data));
+//   })
+//   .catch(err => console.error(err))
+// }
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
@@ -28,8 +42,6 @@
     user, and adding that card to the DOM.
 */
 
-const followersArray = [];
-
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
     Using DOM methods and properties, create and return the following markup:
@@ -50,6 +62,7 @@ const followersArray = [];
     </div>
 */
 
+
 /*
   List of LS Instructors Github username's:
     tetondan
@@ -57,4 +70,65 @@ const followersArray = [];
     justsml
     luishrd
     bigknell
+    crharding
 */
+
+import axios from "axios";
+const followersArray = ['tetondan', 'dustinmyers', 'justsml', 'luishrd', 'bigknell', 'crharding'];
+
+for (let i = 0; i < followersArray.length; i++) {
+   gitCard(followersArray[i]);
+  
+}
+
+function gitCard(username) {
+axios.get(`https://api.github.com/users/${username}`)
+  .then(resp =>{
+    document.querySelector('.cards').appendChild(cardGitHub(resp.data));
+  })
+  .catch(err => console.error(err))
+}
+
+
+function cardGitHub(gitInfo){
+  const cardWrapper = document.createElement("div");
+  const cardImage = document.createElement("img");
+  const infoWrapper = document.createElement('div');
+  const name = document.createElement("h3");
+  const username = document.createElement("p");
+  const location = document.createElement("p");
+  const profile = document.createElement("p");
+  const profileA = document.createElement("a");
+  const followers = document.createElement("p");
+  const following = document.createElement("p");
+  const bio = document.createElement('p');
+
+  cardWrapper.classList.add('card');
+  infoWrapper.classList.add('card-info');
+  name.classList.add('name');
+  username.classList.add('username');
+
+  cardImage.src = gitInfo.avatar_url;
+  name.textContent = gitInfo.name;
+  username.textContent = gitInfo.login;
+  location.textContent = gitInfo.location;
+  profile.textContent = 'Profile';
+  profileA.textContent = 'Link to profile';
+  profileA.href = gitInfo.html_url;
+  followers.textContent = `Followers: ${gitInfo.followers}`;
+  following.textContent = `Following: ${gitInfo.following}`;
+  bio.textContent = gitInfo.bio;
+
+  cardWrapper.appendChild(cardImage);
+  cardWrapper.appendChild(infoWrapper);
+  infoWrapper.appendChild(name);
+  infoWrapper.appendChild(username);
+  infoWrapper.appendChild(location);
+  infoWrapper.appendChild(profile);
+  profile.appendChild(profileA);
+  infoWrapper.appendChild(followers);
+  infoWrapper.appendChild(following);
+  infoWrapper.appendChild(bio);
+
+  return cardWrapper;
+}
