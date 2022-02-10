@@ -74,7 +74,7 @@
 */
 
 import axios from "axios";
-const followersArray = ['tetondan', 'dustinmyers', 'justsml', 'luishrd', 'bigknell', 'crharding'];
+const followersArray = ['tetondan', 'dustinmyers', 'justsml', 'luishrd', 'bigknell', 'crharding', 'BraydenGerdes20'];
 
 for (let i = 0; i < followersArray.length; i++) {
    gitCard(followersArray[i]);
@@ -112,7 +112,7 @@ function cardGitHub(gitInfo){
   name.textContent = gitInfo.name;
   username.textContent = gitInfo.login;
   location.textContent = gitInfo.location;
-  profile.textContent = 'Profile';
+  profile.textContent = 'Profile ';
   profileA.textContent = 'Link to profile';
   profileA.href = gitInfo.html_url;
   followers.textContent = `Followers: ${gitInfo.followers}`;
