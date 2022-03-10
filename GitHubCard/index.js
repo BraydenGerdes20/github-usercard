@@ -1,3 +1,7 @@
+import axios from "axios";
+const followersArray = ['tetondan', 'dustinmyers', 'justsml', 'luishrd', 'bigknell', 'crharding', 'BraydenGerdes20'];
+
+
 /*
   STEP 1: using axios, send a GET request to the following URL
     (replacing the placeholder with your Github name):
@@ -73,8 +77,6 @@
     crharding
 */
 
-import axios from "axios";
-const followersArray = ['tetondan', 'dustinmyers', 'justsml', 'luishrd', 'bigknell', 'crharding', 'BraydenGerdes20'];
 
 for (let i = 0; i < followersArray.length; i++) {
    gitCard(followersArray[i]);
